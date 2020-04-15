@@ -9,7 +9,12 @@ userForm.loginFormCallback = data => {
     });
 }
 
-
+userForm.registerFormCallback = data => {
+    ApiConnector.register(data, response => {
+        response ? location.reload() : console.error("Error: something went wrong");
+        console.log(response);
+    });
+}
 
 // login: oleg@demo.ru, password: demo
 // login: ivan@demo.ru, password: demo
