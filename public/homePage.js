@@ -33,7 +33,7 @@ function fillRatesBoard() {
     });
 }
 
-setInterval(function(){fillRatesBoard();}, 60000);
+setInterval(fillRatesBoard, 60000);
 
 
 //  Money Manager

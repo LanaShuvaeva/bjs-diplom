@@ -6,7 +6,7 @@ const userForm = new UserForm();
 
 userForm.loginFormCallback = data => {
     ApiConnector.login(data, response => {
-        response.success ? location.reload() : console.error("Error: this user is not registered");
+        response.success ? location.reload() : userForm.setLoginErrorMessage(response.data);
         console.log(response);
     });
 }
@@ -16,7 +16,7 @@ userForm.loginFormCallback = data => {
 
 userForm.registerFormCallback = data => {
     ApiConnector.register(data, response => {
-        response ? location.reload() : console.error("Error: something went wrong");
+        response.success ? location.reload() : userForm.setRegisterErrorMessage(response.data);
         console.log(response);
     });
 }
