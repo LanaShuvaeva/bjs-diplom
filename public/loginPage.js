@@ -3,14 +3,16 @@
 const userForm = new UserForm();
 
 userForm.loginFormCallback = data => {
-    // console.log(data);
-    // alert(JSON.stringify(data));
-    // ApiConnector.login(data,  userForm.loginFormAction(data));
-    
-
-
-    // ApiConnector.login(data, (error = null) => {
-        
-    // });
+    ApiConnector.login(data, response => {
+        response.success ? location.reload() : console.error("Error: this user is not registered");
+        console.log(response);
+    });
 }
 
+
+
+// login: oleg@demo.ru, password: demo
+// login: ivan@demo.ru, password: demo
+// login: petr@demo.ru, password: demo
+// login: galina@demo.ru, password: demo
+// login: vladimir@demo.ru, password: demo
