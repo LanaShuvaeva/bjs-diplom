@@ -2,12 +2,17 @@
 
 const userForm = new UserForm();
 
+//  Log In
+
 userForm.loginFormCallback = data => {
     ApiConnector.login(data, response => {
         response.success ? location.reload() : console.error("Error: this user is not registered");
         console.log(response);
     });
 }
+
+
+//  Register 
 
 userForm.registerFormCallback = data => {
     ApiConnector.register(data, response => {

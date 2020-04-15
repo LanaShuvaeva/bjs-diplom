@@ -1,6 +1,6 @@
 'use strict'
 
-// _____________________________ Log Out _____________________________ 
+//  Log Out 
 
 const logOutButton = new LogoutButton();
 
@@ -12,7 +12,7 @@ logOutButton.action = () => {
 }
 
 
-// _____________________________  Profile Widget _____________________________ 
+//  Profile Widget 
 
 ApiConnector.current(current => {
     current.success ? ProfileWidget.showProfile(current.data) : console.error("Error: something went wrong");
@@ -20,7 +20,7 @@ ApiConnector.current(current => {
 });
 
 
-// _____________________________  Rates Board _____________________________ 
+//   Rates Board   
 
 const newRatesBoard = new RatesBoard();
 
@@ -36,3 +36,15 @@ function fillRatesBoard() {
 setInterval(function(){fillRatesBoard();}, 60000);
 
 
+//  Money Manager
+
+const moneyMng = new MoneyManager();
+
+moneyMng.addMoneyCallback = data => {
+    ApiConnector.addMoney(data, response => {
+     response.success ? ProfileWidget.showProfile(response.data) 
+      : moneyMng.setMessage(!response.success, response.data);
+      console.log(response);
+    })
+  }
+  
